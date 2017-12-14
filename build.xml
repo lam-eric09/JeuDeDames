@@ -7,10 +7,16 @@
   <property name="src.dir"     value="src"/>
   <property name="build.dir"   value="build"/>
   <property name="classes.dir" value="${build.dir}/classes"/>
+  <property name="test.build.dir"	value="${build.dir}/test"/>
   <property name="jar.dir" value="${build.dir}/jar"/>
+  <property name="test.dir"	value="test"/>
   
   <property name="main-class" value="jeudedames.JeuDeDames"/>
 
+  <path id="classpath.test">
+  <pathelement location="${classes.dir}"/>
+  </path>
+  
     <target name="clean">
         <delete dir="${build.dir}"/>
     </target>
@@ -19,6 +25,14 @@
         <mkdir dir="${classes.dir}"/>
         <javac srcdir="${src.dir}" destdir="${classes.dir}"/>
     </target>	
+	
+	<target name="test-compile" depends="compile">
+	<mkdir dir="${test.build.dir}"/>
+	<javac srcdir="${test.dir}" destdir="${test.build.dir}">
+	<classpath refid="classpath.test"/>
+	</javac>
+	</target>
+	
 	
     <target name="jar" depends="compile">
         <mkdir dir="${jar.dir}"/>
