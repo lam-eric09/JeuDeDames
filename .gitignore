@@ -1,0 +1,9 @@
+.scannerwork/
+.svn/
+build/
+lib/
+manifest.mf
+nbproject/
+sonar-project.properties
+src/
+test/
